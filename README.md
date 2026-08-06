@@ -38,10 +38,21 @@ Kamailio sits in front of it at the edge (see roadmap).
 | Mobile client | Android, Kotlin, Jetpack Compose |
 | Infrastructure | Docker Compose |
 
+## Documentation
+
+- [Local setup](docs/local-setup.md) — running the stack and configuring softphones
+- [Dialplan reference](docs/dialplan.md) — contexts, extensions, failover behaviour
+
+### Architecture decisions
+
+- [0001 — Build Asterisk from source](docs/adr/0001-build-asterisk-from-source.md)
+- [0002 — Asterisk as the media layer](docs/adr/0002-asterisk-as-media-layer.md)
+- [0003 — Dialplan context composition](docs/adr/0003-dialplan-context-composition.md)
+
 ## Roadmap
 
 - [x] Asterisk containerised, two extensions registering and calling
-- [ ] Dialplan: IVR, voicemail, music on hold, call recording
+- [x] Dialplan: IVR, voicemail, music on hold, call recording
 - [ ] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
 - [ ] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
 - [ ] React admin portal: extension CRUD, live call monitor, CDR dashboard
