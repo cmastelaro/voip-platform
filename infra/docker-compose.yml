@@ -29,13 +29,16 @@ services:
         condition: service_healthy
     volumes:
       - ./ast-db-migrate/config.ini:/src/contrib/ast-db-manage/config.ini:ro
-      
+
   asterisk:
     build:
       context: ./asterisk
     image: voip-pbx:dev
     container_name: pbx
     network_mode: host
+    depends_on:
+      postgres:
+        condition: service_healthy
     volumes:
       - ./asterisk/config/pjsip.conf:/etc/asterisk/pjsip.conf:ro
       - ./asterisk/config/extensions.conf:/etc/asterisk/extensions.conf:ro
@@ -48,4 +51,5 @@ services:
     restart: unless-stopped
 
 volumes:
+  postgres-data:
   asterisk-spool:
