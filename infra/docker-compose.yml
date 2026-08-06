@@ -1,0 +1,14 @@
+name: voip-platform
+
+services:
+  asterisk:
+    build:
+      context: ./asterisk
+    image: voip-pbx:dev
+    container_name: pbx
+    network_mode: host
+    volumes:
+      - ./asterisk/config/pjsip.conf:/etc/asterisk/pjsip.conf:ro
+      - ./asterisk/config/extensions.conf:/etc/asterisk/extensions.conf:ro
+      - ./asterisk/config/rtp.conf:/etc/asterisk/rtp.conf:ro
+    restart: unless-stopped

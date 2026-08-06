@@ -31,7 +31,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 | Layer | Technology |
 |---|---|
-| SIP / media | Asterisk (chan_pjsip), RTP, coturn |
+| SIP / media | Asterisk 22 LTS (compiled from source, chan_pjsip), RTP |
 | Control plane | Java, Spring Boot, Asterisk REST Interface (ARI) |
 | Data | PostgreSQL (Asterisk Realtime + CDR store) |
 | Admin portal | React, TypeScript |
