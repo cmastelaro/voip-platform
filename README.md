@@ -45,15 +45,19 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 ### Architecture decisions
 
-- [0001 — Build Asterisk from source](docs/adr/0001-build-asterisk-from-source.md)
-- [0002 — Asterisk as the media layer](docs/adr/0002-asterisk-as-media-layer.md)
-- [0003 — Dialplan context composition](docs/adr/0003-dialplan-context-composition.md)
+| # | Decision |
+|---|---|
+| [0001](docs/adr/0001-build-asterisk-from-source.md) | Build Asterisk from source rather than install from a distribution package |
+| [0002](docs/adr/0002-asterisk-as-media-layer.md) | Use Asterisk as the media/application layer |
+| [0003](docs/adr/0003-dialplan-context-composition.md) | Compose dialplan from single-purpose contexts |
+| [0004](docs/adr/0004-pjsip-realtime-over-odbc.md) | Store PJSIP configuration in PostgreSQL via ODBC realtime |
 
 ## Roadmap
 
 - [x] Asterisk containerised, two extensions registering and calling
-- [x] Dialplan: IVR, voicemail, music on hold, call recording
-- [ ] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
+- [x] Dialplan: context-based authorisation, voicemail, failover routing
+- [x] IVR menu, call recording, music on hold
+- [x] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
 - [ ] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
 - [ ] React admin portal: extension CRUD, live call monitor, CDR dashboard
 - [ ] Android softphone: registration, in/outbound calls, call UI
