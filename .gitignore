@@ -31,3 +31,9 @@ android/local.properties
 # Runtime artefacts
 *.log
 recordings/
+
+# Call recordings and voicemail - personal data, never committed
+infra/asterisk/recordings/*
+!infra/asterisk/recordings/.gitkeep
+infra/asterisk/sounds/custom/*.wav
+!infra/asterisk/sounds/custom/.gitkeep
