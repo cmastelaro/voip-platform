@@ -40,8 +40,9 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 ## Documentation
 
-- [Local setup](docs/local-setup.md) — running the stack and configuring softphones
-- [Dialplan reference](docs/dialplan.md) — contexts, extensions, failover behaviour
+- [Local setup](docs/local-setup.md) — Running the stack and configuring softphones
+- [Dialplan reference](docs/dialplan.md) — Contexts, extensions, failover behaviour
+- [Realtime configuration](docs/realtime.md) - PostgresSQL-backend provisioning, ODBC setup, sorcery wizard precedence and diagnostics
 
 ### Architecture decisions
 
