@@ -59,3 +59,24 @@ dialplan reload
 voicemail reload
 pjsip reload
 ```
+
+## IVR greeting
+
+The main menu (`700`) plays `custom/ivr-greeting.wav` if present, and falls back
+to the stock `demo-instruct` prompt if not. The check uses `STAT()` and is
+evaluated per call, so changes take effect without a reload.
+
+| Action | How |
+|---|---|
+| Record or re-record | Dial `*90`, speak, press `#` |
+| Restore stock prompt | Delete `infra/asterisk/sounds/custom/ivr-greeting.wav` |
+| Archive a version | Rename with a `.bak` suffix |
+
+Custom audio must be 8 kHz mono 16-bit PCM to match the ulaw/alaw sample rate:
+
+```bash
+ffmpeg -i input.mp3 -ar 8000 -ac 1 -acodec pcm_s16le output.wav
+```
+
+Recorded greetings are gitignored — they are user-generated content, and third
+party audio carries licensing obligations unsuitable for a public repository.
