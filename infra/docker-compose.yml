@@ -51,6 +51,8 @@ services:
       - ./asterisk/config/extconfig.conf:/etc/asterisk/extconfig.conf:ro
       - ./asterisk/config/sorcery.conf:/etc/asterisk/sorcery.conf:ro
       - ./asterisk/config/odbc.ini:/etc/odbc.ini:ro
+      - ./asterisk/config/http.conf:/etc/asterisk/http.conf:ro
+      - ./asterisk/config/ari.conf:/etc/asterisk/ari.conf:ro
       - asterisk-spool:/var/spool/asterisk
     restart: unless-stopped
 
