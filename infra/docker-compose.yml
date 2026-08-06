@@ -11,4 +11,9 @@ services:
       - ./asterisk/config/pjsip.conf:/etc/asterisk/pjsip.conf:ro
       - ./asterisk/config/extensions.conf:/etc/asterisk/extensions.conf:ro
       - ./asterisk/config/rtp.conf:/etc/asterisk/rtp.conf:ro
+      - ./asterisk/config/voicemail.conf:/etc/asterisk/voicemail.conf:ro
+      - asterisk-spool:/var/spool/asterisk
     restart: unless-stopped
+
+volumes:
+  asterisk-spool:
