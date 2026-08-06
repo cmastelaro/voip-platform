@@ -1,12 +1,44 @@
 name: voip-platform
 
 services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: voip-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ast-db-migrate:
+    build:
+      context: ./ast-db-migrate
+    container_name: voip-db-migrate
+    profiles: ["tools"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./ast-db-migrate/config.ini:/src/contrib/ast-db-manage/config.ini:ro
+
   asterisk:
     build:
       context: ./asterisk
     image: voip-pbx:dev
     container_name: pbx
     network_mode: host
+    depends_on:
+      postgres:
+        condition: service_healthy
     volumes:
       - ./asterisk/config/pjsip.conf:/etc/asterisk/pjsip.conf:ro
       - ./asterisk/config/extensions.conf:/etc/asterisk/extensions.conf:ro
@@ -15,8 +47,13 @@ services:
       - ./asterisk/config/musiconhold.conf:/etc/asterisk/musiconhold.conf:ro
       - ./asterisk/sounds/custom:/var/lib/asterisk/sounds/custom
       - ./asterisk/recordings:/recordings
+      - ./asterisk/config/res_odbc.conf:/etc/asterisk/res_odbc.conf:ro
+      - ./asterisk/config/extconfig.conf:/etc/asterisk/extconfig.conf:ro
+      - ./asterisk/config/sorcery.conf:/etc/asterisk/sorcery.conf:ro
+      - ./asterisk/config/odbc.ini:/etc/odbc.ini:ro
       - asterisk-spool:/var/spool/asterisk
     restart: unless-stopped
 
 volumes:
+  postgres-data:
   asterisk-spool:
