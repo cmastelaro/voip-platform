@@ -40,7 +40,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 ## Roadmap
 
-- [ ] Asterisk containerised, two extensions registering and calling
+- [x] Asterisk containerised, two extensions registering and calling
 - [ ] Dialplan: IVR, voicemail, music on hold, call recording
 - [ ] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
 - [ ] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
