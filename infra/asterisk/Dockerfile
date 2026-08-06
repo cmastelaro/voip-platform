@@ -1,4 +1,3 @@
-cat > ~/voip-platform/infra/asterisk/Dockerfile << 'EOF'
 FROM debian:bookworm-slim
 
 ARG ASTERISK_VERSION=22
@@ -39,4 +38,3 @@ RUN ./configure \
  && rm -rf /usr/src/asterisk-src
 
 CMD ["asterisk", "-f", "-vvv"]
-EOF
