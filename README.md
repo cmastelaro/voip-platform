@@ -31,7 +31,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 | Layer | Technology |
 |---|---|
-| SIP / media | Asterisk (chan_pjsip), RTP, coturn |
+| SIP / media | Asterisk 22 LTS (compiled from source, chan_pjsip), RTP |
 | Control plane | Java, Spring Boot, Asterisk REST Interface (ARI) |
 | Data | PostgreSQL (Asterisk Realtime + CDR store) |
 | Admin portal | React, TypeScript |
@@ -40,7 +40,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 
 ## Roadmap
 
-- [ ] Asterisk containerised, two extensions registering and calling
+- [x] Asterisk containerised, two extensions registering and calling
 - [ ] Dialplan: IVR, voicemail, music on hold, call recording
 - [ ] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
 - [ ] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
