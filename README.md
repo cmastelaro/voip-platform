@@ -43,6 +43,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 - [Local setup](docs/local-setup.md) — Running the stack and configuring softphones
 - [Dialplan reference](docs/dialplan.md) — Contexts, extensions, failover behaviour
 - [Realtime configuration](docs/realtime.md) - PostgresSQL-backend provisioning, ODBC setup, sorcery wizard precedence and diagnostics
+- [Control plane](docs/backend.md) - Spring Boot API: configuration, schema ownership, and endpoints
 
 ### Architecture decisions
 
@@ -52,6 +53,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 | [0002](docs/adr/0002-asterisk-as-media-layer.md) | Use Asterisk as the media/application layer |
 | [0003](docs/adr/0003-dialplan-context-composition.md) | Compose dialplan from single-purpose contexts |
 | [0004](docs/adr/0004-pjsip-realtime-over-odbc.md) | Store PJSIP configuration in PostgreSQL via ODBC realtime |
+| [0005](docs/adr/0005-control-plane-writes-asterisk-schema.md) | The control plane writes Asterisk's schema directly |
 
 ## Roadmap
 
@@ -59,7 +61,7 @@ Kamailio sits in front of it at the edge (see roadmap).
 - [x] Dialplan: context-based authorisation, voicemail, failover routing
 - [x] IVR menu, call recording, music on hold
 - [x] Endpoint configuration migrated to PostgreSQL (Asterisk Realtime)
-- [ ] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
+- [x] Spring Boot control plane: REST provisioning, ARI event stream, JWT auth
 - [ ] React admin portal: extension CRUD, live call monitor, CDR dashboard
 - [ ] Android softphone: registration, in/outbound calls, call UI
 - [ ] Browser softphone over WebRTC (WSS + coturn)

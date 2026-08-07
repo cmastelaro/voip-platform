@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: pbx-api
+
+  datasource:
+    url: jdbc:postgresql://192.168.1.123:5433/asterisk
+    username: asterisk
+    password: dev_only_not_secret
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.voipplatform: DEBUG

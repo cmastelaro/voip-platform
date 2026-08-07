@@ -37,3 +37,6 @@ infra/asterisk/recordings/*
 !infra/asterisk/recordings/.gitkeep
 infra/asterisk/sounds/custom/*.wav
 !infra/asterisk/sounds/custom/.gitkeep
+# Local backend configuration - contains credentials
+backend/**/.env.local
+backend/**/src/main/resources/application-local.yml
