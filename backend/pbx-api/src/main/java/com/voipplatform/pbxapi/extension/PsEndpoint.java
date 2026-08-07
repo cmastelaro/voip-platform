@@ -44,6 +44,15 @@ public class PsEndpoint {
     @Column(name = "callerid")
     private String callerid;
 
+    @Column(name = "direct_media")
+    private String directMedia;
+
+    @Column(name = "force_rport")
+    private String forceRport;
+
+    @Column(name = "rewrite_contact")
+    private String rewriteContact;
+
     protected PsEndpoint() {
         // required by JPA
     }
@@ -71,4 +80,13 @@ public class PsEndpoint {
 
     public String getCallerid() { return callerid; }
     public void setCallerid(String callerid) { this.callerid = callerid; }
+
+    public String getDirectMedia() { return directMedia; }
+    public void setDirectMedia(String directMedia) { this.directMedia = directMedia; }
+
+    public String getForceReport() { return forceRport; }
+    public void setForceReport(String forceRport) { this.forceRport = forceRport; }
+
+    public String getRewriteContact() { return rewriteContact; }
+    public void setRewriteContact(String rewriteContact) { this.rewriteContact = rewriteContact; }
 }

@@ -1,24 +1,39 @@
 package com.voipplatform.pbxapi.extension;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/extensions")
 public class ExtensionController {
 
-    private final PsEndpointRepository repository;
+    private final ExtensionService service;
 
-    // Single constructor - Spring injects the repository without an annotation.
-    public ExtensionController(PsEndpointRepository repository) {
-        this.repository = repository;
+    public ExtensionController(ExtensionService service) {
+        this.service = service;
     }
 
     @GetMapping
-    public List<PsEndpoint> list() {
-        return repository.findAll();
+    public List<ExtensionResponse> list() {
+        return service.list();
+    }
+
+    @PostMapping
+    public ResponseEntity<ExtensionResponse> create(@Valid @RequestBody CreateExtensionRequest request) {
+        ExtensionResponse created = service.create(request);
+        return ResponseEntity
+                .created(URI.create("/api/extensions/" + created.extension()))
+                .body(created);
+    }
+
+    @DeleteMapping("/{extension}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String extension) {
+        service.delete(extension);
     }
 }
